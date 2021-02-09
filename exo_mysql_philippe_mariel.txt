@@ -9,3 +9,9 @@
 #9 SELECT genre.nom as 'nom genre', COUNT(film.titre) as 'nombre films', film.duree_min as 'minutes totales' FROM film, genre WHERE film.genre_id = genre.id AND film.genre_id BETWEEN 3 AND 5 GROUP BY genre.nom
 #10 SELECT MIN(film.id) AS "min id film" FROM film WHERE genre_id = 6
 #11 SELECT titre, date_debut_affiche, date_fin_affiche, DATEDIFF(date_fin_affiche, date_debut_affiche)* 24 AS "temps_affiche" FROM film WHERE DATEDIFF(date_fin_affiche, date_debut_affiche) <> "null"
+#12 SELECT COUNT(DISTINCT(abonnement.id)) - 1 AS "nombre_abonnement", CEIL(AVG(prix)) AS "moyenne_abonnement", COUNT(membre.id) AS "nombre_abonees" FROM abonnement, membre
+#13 #13 SELECT nom, pourcentage_reduc FROM reduction WHERE pourcentage_reduc > 0 AND pourcentage_reduc <> 25
+#14 SELECT nom_salle FROM salle WHERE nbr_siege BETWEEN 100 AND 300 AND etage_salle = 2#14 SELECT nom_salle FROM salle WHERE nbr_siege BETWEEN 100 AND 300 AND etage_salle = 2
+#15 SELECT genre.nom AS nom_genre, MAX(duree_min) AS "duree_min" FROM film JOIN genre ON genre.id = film.genre_id WHERE genre_id IS NOT NULL GROUP BY genre.nom
+#16 SELECT SUM(nbr_siege) as nbr_siege FROM salle WHERE etage_salle = 1
+#17 SELECT membre_id AS id_membre, date AS histo_date FROM historique_membre JOIN membre ON membre.id = historique_membre.membre_id WHERE film_id = 453 OR film_id = 642 ORDER BY membre_id ASC

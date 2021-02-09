@@ -15,3 +15,6 @@
 #15 SELECT genre.nom AS nom_genre, MAX(duree_min) AS "duree_min" FROM film JOIN genre ON genre.id = film.genre_id WHERE genre_id IS NOT NULL GROUP BY genre.nom
 #16 SELECT SUM(nbr_siege) as nbr_siege FROM salle WHERE etage_salle = 1
 #17 SELECT membre_id AS id_membre, date AS histo_date FROM historique_membre JOIN membre ON membre.id = historique_membre.membre_id WHERE film_id = 453 OR film_id = 642 ORDER BY membre_id ASC
+#18 Select id, titre, resum FROM film WHERE id = 42
+#19 SELECT UPPER(nom) AS nom_distrib, COUNT(film.distrib_id) AS nombre_films, SUM(film.duree_min) AS duree_min FROM distrib INNER JOIN film ON distrib.id = film.distrib_id GROUP BY distrib.nom ORDER BY COUNT(film.distrib_id) DESC, SUM(film.duree_min) DESC
+#20 SELECT CONCAT(UCASE(MID(nom,1,1)),MID(nom,2)) AS nom, CONCAT(UCASE(MID(prenom,1,1)),MID(prenom,2)) AS prenom, COUNT(historique_membre.membre_id) AS nombre_film, membre.date_dernier_film AS date_dernier_film, film.titre AS nom_dernier_film FROM fiche_personne INNER JOIN membre ON fiche_personne.id = membre.fiche_perso_id INNER JOIN historique_membre ON fiche_personne.id = historique_membre.membre_id INNER JOIN film ON membre.dernier_film_id = film.id WHERE membre.dernier_film_id IS NOT NULL GROUP BY nom ORDER BY COUNT(historique_membre.membre_id) DESC
